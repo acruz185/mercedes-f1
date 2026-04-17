@@ -11,6 +11,10 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
     const [currentPage, setCurrentPage] = useState(1)
     const [rowsPerPage, setRowsPerPage] = useState(20)
     const [searchQuery, setSearchQuery] = useState("")
+    const [searchA, setSearchA] = useState("")
+    const [searchB, setSearchB] = useState("")
+    const [boolMode, setBoolMode] = useState<"AND" | "OR">("AND")
+    const [regexMode, setRegexMode] = useState(false)
 
     //flatten races into individual rows
     const allRows: RaceRow[] = []
@@ -20,6 +24,12 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
         })
     })
 
+    let hasRegexError = false
+    if (regexMode && (searchA || searchB)) {
+        try { new RegExp(searchA) } catch { hasRegexError = true }
+        try { new RegExp(searchB) } catch { hasRegexError = true }
+    }
+    
     //filter by search
     const filteredRows = allRows.filter(item => {
         const text = `
@@ -30,7 +40,23 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
             ${item.result.Driver.givenName}
             ${item.result.Driver.familyName}
         `.toLowerCase()
-        return text.includes(searchQuery.toLowerCase())
+        
+        const matchA = (query: string) => {
+            if (!query) return true
+            try {
+                return regexMode
+                    ? new RegExp(query, 'i').test(text)
+                    : text.includes(query.toLowerCase())
+            } catch {
+                return text.includes(query.toLowerCase())
+            }
+        }
+
+        if (boolMode === "AND") {
+            return matchA(searchA) && matchA(searchB)
+        } else {
+            return matchA(searchA) || matchA(searchB)
+        }
     })
 
     const totalPages = Math.ceil(filteredRows.length / rowsPerPage)
@@ -42,13 +68,31 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
             <div id="table-controls">
                 <input
                     type="text"
-                    placeholder="Search races..."
-                    value={searchQuery}
+                    placeholder="Search..."
+                    value={searchA}
                     onChange={e => {
-                        setSearchQuery(e.target.value)
+                        setSearchA(e.target.value)
                         setCurrentPage(1)
                     }}
                 />
+                <select
+                    value={boolMode}
+                    onChange={e => setBoolMode(e.target.value as "AND" | "OR")}>
+                    <option value="AND">AND</option>
+                    <option value="OR">OR</option>
+                </select>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchB}
+                    onChange={e => {
+                        setSearchB(e.target.value)
+                        setCurrentPage(1)
+                    }}
+                    />
+                <button onClick={() => setRegexMode(r => !r)}>
+                    {regexMode ? "Regex ON" : "Regex OFF"}
+                </button>                    
                 <select
                     value={rowsPerPage}
                     onChange={e => {
@@ -61,7 +105,11 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                     <option value={50}>50 rows</option>
                 </select>
             </div>
-
+            {hasRegexError && (
+                <p style={{ color: '#c0404f', fontSize: '12px' }}>
+                    Invalid regex pattern — using plain text search
+                </p>
+            )}
             <table>
                 <thead>
                     <tr>
