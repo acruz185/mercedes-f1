@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { fetchRaceResults, fetchConstructorStandings } from './api'
 import type { Race, ConstructorStanding } from './api'
+import RaceTable from './components/RaceTable'
 
 function App() {
-  //
   const [races, setRaces] = useState<Race[]>([])
   const [standings, setStandings] = useState<ConstructorStanding[]>([])
   const [loading, setLoading] = useState(true)
@@ -28,6 +28,7 @@ function App() {
       <h1>Mercedes AMG F1</h1>
       <p>Races loaded: {races.length}</p>
       <p>Seasons loaded: {standings.length}</p>
+      <RaceTable races={races} />
     </div>
   )
 }
