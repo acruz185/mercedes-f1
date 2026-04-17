@@ -1,19 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900&display=swap');
+@import "tailwindcss";
 
-:root {
-  --color-primary: #00A19C;
-  --color-accent: #80142B;
-  --color-text: #C6C6C6;
-  --color-bg: #111111;
-  --color-bg-card: #1a1a1a;
-  --font-fancy: 'Instrument Serif', serif;
-  --font-fun: 'Orbitron', sans-serif;
+@import "tailwindcss";
+
+@theme {
+    --color-mercedes-primary: #00A19C;
+    --color-mercedes-accent: #80142B;
+    --color-mercedes-light: #C6C6C6;
+    --color-mercedes-dark: #111111;
+    --color-mercedes-card: #1a1a1a;
+    --color-mercedes-text: #E8E8E8;
+
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Inter Tight', sans-serif;
+    --font-fancy: 'Instrument Serif', serif;
+    --font-tech: 'Orbitron', sans-serif;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900&display=swap');
+
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-fancy);
+    background-color: #111111;
+    color: #E8E8E8;
+    font-family: 'Inter Tight', sans-serif;
 }
