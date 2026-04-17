@@ -26,12 +26,14 @@ function App() {
   }
 
   return (
-    <div id="app">
-      <h1>Mercedes AMG F1</h1>
-      <p>Races loaded: {races.length}</p>
-      <p>Seasons loaded: {standings.length}</p>
-      <RaceTable races={races} />
-      <StandingsChart standings={standings} />
+    <div className="min-h-screen bg-mercedes-dark text-mercedes-text">
+      <main className="max-w-7x1 mx-auto px-6">
+        <h1 className="text-6x1 font-display text-mercedes-primary">
+            Mercedes AMG F1
+          </h1>
+          <RaceTable races={races} />
+          <StandingsChart standings={standings} />
+      </main>
     </div>
   )
 }
