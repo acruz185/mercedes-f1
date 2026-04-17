@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { fetchRaceResults, fetchConstructorStandings } from './api'
 import type { Race, ConstructorStanding } from './api'
 import RaceTable from './components/RaceTable'
+import StandingsChart from './components/StandingsChart'
+
 
 function App() {
   const [races, setRaces] = useState<Race[]>([])
@@ -29,6 +31,7 @@ function App() {
       <p>Races loaded: {races.length}</p>
       <p>Seasons loaded: {standings.length}</p>
       <RaceTable races={races} />
+      <StandingsChart standings={standings} />
     </div>
   )
 }
