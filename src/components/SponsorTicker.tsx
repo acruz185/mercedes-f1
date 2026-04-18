@@ -55,7 +55,7 @@ export default function SponsorTicker() {
                             }}
                         >
                             <img
-                                src={`https://logo.clearbit.com/${getSponsorDomain(sponsor.name)}`}
+                                src={sponsor.logo}
                                 alt={sponsor.name}
                                 style={{
                                     height: '32px',

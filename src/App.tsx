@@ -4,12 +4,17 @@ import type { Race, ConstructorStanding } from './api'
 import RaceTable from './components/RaceTable'
 import StandingsChart from './components/StandingsChart'
 import TrackSection from './components/TrackSection'
-
+import DriverCarousel from './components/DriverCarousel'
+import SponsorTicker from './components/SponsorTicker'
+import IntroAnimation from './components/IntroAnimation'
+import Hero from './components/Hero'
 
 function App() {
   const [races, setRaces] = useState<Race[]>([])
   const [standings, setStandings] = useState<ConstructorStanding[]>([])
-  const [loading, setLoading] = useState(true)
+  const [introComplete, setIntroComplete] = useState(
+    () => localStorage.getItem('introSeen') === 'true'
+  )
 
   useEffect(() => {
     async function loadData() {
@@ -17,26 +22,33 @@ function App() {
       setRaces(raceData)
       const standingsData = await fetchConstructorStandings()
       setStandings(standingsData)
-      setLoading(false)
     }
     loadData()
   }, [])
 
-  if (loading) {
-    return <div id="loading">Loading Mercedes data...</div>
+  const handleIntroComplete = () => {
+      localStorage.setItem('introSeen', 'true')
+      setIntroComplete(true)
   }
 
   return (
-    <div className="min-h-screen bg-mercedes-dark text-mercedes-text">
-      <main className="max-w-7x1 mx-auto px-6">
-        <h1 className="text-6x1 font-display text-mercedes-primary">
-            Mercedes AMG F1
-          </h1>
-          <RaceTable races={races} />
-          <StandingsChart standings={standings} />
-          <TrackSection />
-      </main>
+    <div>
+        {!introComplete && (
+            <IntroAnimation onComplete={() => setIntroComplete(true)} />
+        )}
+        <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+        <Hero />
+      <div className="min-h-screen bg-mercedes-dark text-mercedes-text">
+        <main className="max-w-7xl mx-auto px-6">
+            <RaceTable races={races} />
+            <StandingsChart standings={standings} />
+            <TrackSection />
+            <DriverCarousel />
+            <SponsorTicker />
+        </main>
+      </div>
     </div>
+  </div>
   )
 }
 
