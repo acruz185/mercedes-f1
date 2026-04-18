@@ -23,3 +23,8 @@ body {
     color: #E8E8E8;
     font-family: 'Inter Tight', sans-serif;
 }
+
+.track-path-animated {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}

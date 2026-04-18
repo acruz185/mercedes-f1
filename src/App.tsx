@@ -3,6 +3,7 @@ import { fetchRaceResults, fetchConstructorStandings } from './api'
 import type { Race, ConstructorStanding } from './api'
 import RaceTable from './components/RaceTable'
 import StandingsChart from './components/StandingsChart'
+import TrackSection from './components/TrackSection'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           </h1>
           <RaceTable races={races} />
           <StandingsChart standings={standings} />
+          <TrackSection />
       </main>
     </div>
   )
