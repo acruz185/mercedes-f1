@@ -64,8 +64,8 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
 
     return (
     <div className="py-16 px-6 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-display text-mercedes-teal mb-2">Race Results</h2>
-        <p className="text-mercedes-silver text-sm mb-8 tracking-widest uppercase">2010 — 2025 · All Circuits</p>
+        <h2 className="text-4xl font-display text-mercedes-primary mb-2">Race Results</h2>
+        <p className="text-mercedes-light text-sm mb-8 tracking-widest uppercase">2010 — 2025 · All Circuits</p>
 
         {/* controls */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -74,12 +74,12 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                 placeholder="Search..."
                 value={searchA}
                 onChange={e => { setSearchA(e.target.value); setCurrentPage(1) }}
-                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-teal transition-colors"
+                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-primary transition-colors"
             />
             <select
                 value={boolMode}
                 onChange={e => setBoolMode(e.target.value as "AND" | "OR")}
-                className="bg-mercedes-card border border-white/10 text-mercedes-teal rounded px-3 py-2 text-sm focus:outline-none"
+                className="bg-mercedes-card border border-white/10 text-mercedes-primary rounded px-3 py-2 text-sm focus:outline-none"
             >
                 <option value="AND">AND</option>
                 <option value="OR">OR</option>
@@ -89,13 +89,13 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                 placeholder="Search..."
                 value={searchB}
                 onChange={e => { setSearchB(e.target.value); setCurrentPage(1) }}
-                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-teal transition-colors"
+                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-primary transition-colors"
             />
             <button
                 onClick={() => setRegexMode(r => !r)}
                 className={`px-4 py-2 rounded text-sm border transition-colors ${
                     regexMode
-                        ? 'border-mercedes-teal text-mercedes-teal bg-mercedes-teal/10'
+                        ? 'border-mercedes-primary text-mercedes-primary bg-mercedes-primary/10'
                         : 'border-white/10 text-white/40 hover:border-white/30'
                 }`}
             >
@@ -104,7 +104,7 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
             <select
                 value={rowsPerPage}
                 onChange={e => { setRowsPerPage(parseInt(e.target.value)); setCurrentPage(1) }}
-                className="bg-mercedes-card border border-white/10 text-mercedes-silver rounded px-3 py-2 text-sm focus:outline-none ml-auto"
+                className="bg-mercedes-card border border-white/10 text-mercedes-light rounded px-3 py-2 text-sm focus:outline-none ml-auto"
             >
                 <option value={10}>10 rows</option>
                 <option value={20}>20 rows</option>
@@ -117,17 +117,17 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
         )}
 
         {/* table */}
-        <div className="rounded-xl border border-white/5 overflow-hidden">
+        <div className="rounded-xl border border-black/5 overflow-hidden">
             <table className="w-full text-sm">
                 <thead>
                     <tr className="bg-mercedes-card border-b border-white/10">
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Year</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Grand Prix</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Circuit</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Date</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Driver</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Pos</th>
-                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Pts</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Year</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Grand Prix</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Circuit</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Date</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Driver</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Pos</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-primary font-display tracking-widest">Pts</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -136,10 +136,10 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                             key={index}
                             className="border-b border-white/5 hover:bg-white/5 transition-colors"
                         >
-                            <td className="px-4 py-3 text-mercedes-teal font-display text-base">{item.race.season}</td>
+                            <td className="px-4 py-3 text-mercedes-primary font-display text-base">{item.race.season}</td>
                             <td className="px-4 py-3 text-mercedes-text">{item.race.raceName}</td>
-                            <td className="px-4 py-3 text-mercedes-silver text-xs">{item.race.Circuit.circuitName}</td>
-                            <td className="px-4 py-3 text-mercedes-silver text-xs">{item.race.date}</td>
+                            <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.Circuit.circuitName}</td>
+                            <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.date}</td>
                             <td className="px-4 py-3 text-mercedes-text font-medium">{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
                             <td className="px-4 py-3">
                                 <span style={{
@@ -173,31 +173,31 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
             <button
                 onClick={() => setCurrentPage(1)}
                 disabled={currentPage === 1}
-                className="px-3 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+                className="px-3 py-2 rounded border border-white/10 text-mercedes-light hover:border-mercedes-primary hover:text-mercedes-primary disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
             >
                 «
             </button>
             <button
                 onClick={() => setCurrentPage(p => p - 1)}
                 disabled={currentPage === 1}
-                className="px-4 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+                className="px-4 py-2 rounded border border-white/10 text-mercedes-light hover:border-mercedes-primary hover:text-mercedes-primary disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
             >
                 Previous
             </button>
-            <span className="text-mercedes-silver text-sm px-4">
-                Page <span className="text-mercedes-teal font-display text-lg">{currentPage}</span> of {totalPages}
+            <span className="text-mercedes-light text-sm px-4">
+                Page <span className="text-mercedes-primary font-display text-lg">{currentPage}</span> of {totalPages}
             </span>
             <button
                 onClick={() => setCurrentPage(p => p + 1)}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+                className="px-4 py-2 rounded border border-white/10 text-mercedes-light hover:border-mercedes-primary hover:text-mercedes-primary disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
             >
                 Next
             </button>
             <button
                 onClick={() => setCurrentPage(totalPages)}
                 disabled={currentPage === totalPages}
-                className="px-3 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+                className="px-3 py-2 rounded border border-white/10 text-mercedes-light hover:border-mercedes-primary hover:text-mercedes-primary disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
             >
                 »
             </button>

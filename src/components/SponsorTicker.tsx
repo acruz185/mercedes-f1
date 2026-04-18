@@ -6,7 +6,7 @@ export default function SponsorTicker() {
 
     return (
         <div className="py-12 border-t border-white/5">
-            <p className="text-center text-xs text-mercedes-silver mb-8 tracking-widest uppercase">
+            <p className="text-center text-xs text-mercedes-primaryLight mb-8 tracking-widest uppercase">
                 Partners & Sponsors
             </p>
 

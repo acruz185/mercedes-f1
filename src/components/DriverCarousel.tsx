@@ -17,17 +17,17 @@ export default function DriverCarousel() {
 
     return (
         <section className="py-20 px-6 max-w-7xl mx-auto">
-            <h2 className="text-4xl font-display text-mercedes-teal mb-2">
+            <h2 className="text-4xl font-display text-mercedes-primary mb-2">
                 The Drivers
             </h2>
-            <p className="text-mercedes-silver text-sm mb-12">
+            <p className="text-mercedes-primaryLight text-sm mb-12">
                 Click a card to flip it
             </p>
 
             <div className="flex items-center justify-center gap-8">
                 <button
                     onClick={handlePrev}
-                    className="text-mercedes-teal text-4xl font-display hover:opacity-70 transition-opacity"
+                    className="text-mercedes-primary text-4xl font-display hover:opacity-70 transition-opacity"
                 >
                     ‹
                 </button>
@@ -111,7 +111,7 @@ export default function DriverCarousel() {
 
                 <button
                     onClick={handleNext}
-                    className="text-mercedes-teal text-4xl font-display hover:opacity-70 transition-opacity"
+                    className="text-mercedes-primary text-4xl font-display hover:opacity-70 transition-opacity"
                 >
                     ›
                 </button>
