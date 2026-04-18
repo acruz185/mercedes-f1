@@ -50,35 +50,37 @@ export default function SponsorTicker() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
+                                justifyContent: 'center',
                                 gap: '8px',
-                                flexShrink: 0
+                                flexShrink: 0,
+                                width: '120px'
                             }}
                         >
-                            <img
-                                src={sponsor.logo}
-                                alt={sponsor.name}
-                                style={{
-                                    height: '32px',
-                                    width: 'auto',
-                                    objectFit: 'contain',
-                                    opacity: 0.7
-                                }}
-                                onError={e => {
-                                    // fallback to text if logo fails to load
-                                    const target = e.target as HTMLImageElement
-                                    target.style.display = 'none'
-                                    target.nextElementSibling?.setAttribute('style', 'display:block')
-                                }}
-                            />
-                            <span style={{
-                                display: 'none',
-                                color: '#666',
-                                fontSize: '12px',
-                                fontFamily: 'var(--font-body)',
-                                whiteSpace: 'nowrap'
+                            <div style={{
+                                width:'100px',
+                                height: '40px',  // fixed height container
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
                             }}>
-                                {sponsor.name}
-                            </span>
+                                <img
+                                    src={sponsor.logo}
+                                    alt={sponsor.name}
+                                    style={{
+                                        maxWidth: '100px',
+                                        maxHeight: '40px',
+                                        height: 'auto',
+                                        width: 'auto',
+                                        objectFit: 'contain',
+                                        opacity: 0.7
+                                    }}
+                                    onError={e => {
+                                        // fallback to text if logo fails to load
+                                        const target = e.target as HTMLImageElement
+                                        target.style.display = 'none'
+                                    }}
+                                />
+                            </div>
                             <span style={{
                                 fontSize: '10px',
                                 color: '#444',
