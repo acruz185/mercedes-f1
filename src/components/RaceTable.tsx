@@ -142,13 +142,22 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                             <td className="px-4 py-3 text-mercedes-silver text-xs">{item.race.date}</td>
                             <td className="px-4 py-3 text-mercedes-text font-medium">{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
                             <td className="px-4 py-3">
-                                <span className={`px-2 py-1 rounded text-xs font-display ${
-                                    item.result.position === '1'
-                                        ? 'bg-mercedes-teal/20 text-mercedes-teal'
+                                <span style={{
+                                    padding: '2px 8px',
+                                    borderRadius: '4px',
+                                    fontSize: '12px',
+                                    fontFamily: 'var(--font-display)',
+                                    background: item.result.position === '1'
+                                        ? 'rgba(0, 161, 156, 0.2)'
                                         : item.result.position === '2' || item.result.position === '3'
-                                        ? 'bg-white/10 text-white'
-                                        : 'text-mercedes-silver'
-                                }`}>
+                                        ? 'rgba(255,255,255,0.1)'
+                                        : 'transparent',
+                                    color: item.result.position === '1'
+                                        ? '#00A19C'
+                                        : item.result.position === '2' || item.result.position === '3'
+                                        ? 'white'
+                                        : '#C6C6C6'
+                                }}>
                                     {item.result.position}
                                 </span>
                             </td>
