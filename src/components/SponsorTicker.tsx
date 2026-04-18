@@ -61,7 +61,6 @@ export default function SponsorTicker() {
                                     height: '32px',
                                     width: 'auto',
                                     objectFit: 'contain',
-                                    filter: 'grayscale(100%) brightness(1.5)',
                                     opacity: 0.7
                                 }}
                                 onError={e => {
