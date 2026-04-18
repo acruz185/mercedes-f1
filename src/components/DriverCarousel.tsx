@@ -27,7 +27,7 @@ export default function DriverCarousel() {
             <div className="flex items-center justify-center gap-8">
                 <button
                     onClick={handlePrev}
-                    className="text-mercedes-primary text-4xl font-display hover:opacity-70 transition-opacity"
+                    className="text-mercedes-light text-4xl font-display hover:opacity-70 transition-opacity"
                 >
                     ‹
                 </button>
@@ -111,7 +111,7 @@ export default function DriverCarousel() {
 
                 <button
                     onClick={handleNext}
-                    className="text-mercedes-primary text-4xl font-display hover:opacity-70 transition-opacity"
+                    className="text-mercedes-light text-4xl font-display hover:opacity-70 transition-opacity"
                 >
                     ›
                 </button>

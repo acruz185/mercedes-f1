@@ -75,7 +75,8 @@ export default function Hero() {
                     fontSize: '10px',
                     color: '#C6C6C6',
                     letterSpacing: '0.2em',
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
+                    fontStyle: 'italic'
                 }}>
                     Das Beste oder nichts
                 </p>

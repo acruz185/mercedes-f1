@@ -64,9 +64,10 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
 
     return (
     <div className="py-16 px-6 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-display text-mercedes-primary mb-2">Race Results</h2>
-        <p className="text-mercedes-light text-sm mb-8 tracking-widest uppercase">2010 — 2025 · All Circuits</p>
-
+        <h2 className="text-4xl font-display text-mercedes-primary mb-2 font-black">Race Results</h2>
+        <p className="text-mercedes-light text-sm mb-8 tracking-widest uppercase">
+        2010 — 2025 · <span className="text-mercedes-accent">All Circuits</span>
+        </p>
         {/* controls */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
             <input
@@ -79,7 +80,7 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
             <select
                 value={boolMode}
                 onChange={e => setBoolMode(e.target.value as "AND" | "OR")}
-                className="bg-mercedes-card border border-white/10 text-mercedes-primary rounded px-3 py-2 text-sm focus:outline-none"
+                className="bg-mercedes-card border border-white/10 text-mercedes-accent rounded px-3 py-2 text-sm focus:outline-none"
             >
                 <option value="AND">AND</option>
                 <option value="OR">OR</option>
@@ -134,13 +135,16 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                     {pageRows.map((item, index) => (
                         <tr
                             key={index}
+                            style={{
+                              background: index % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent'  
+                            }}
                             className="border-b border-white/5 hover:bg-white/5 transition-colors"
                         >
                             <td className="px-4 py-3 text-mercedes-primary font-display text-base">{item.race.season}</td>
-                            <td className="px-4 py-3 text-mercedes-text">{item.race.raceName}</td>
+                            <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.raceName}</td>
                             <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.Circuit.circuitName}</td>
                             <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.date}</td>
-                            <td className="px-4 py-3 text-mercedes-text font-medium">{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
+                            <td className="px-4 py-3 text-mercedes-light text-xs">{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
                             <td className="px-4 py-3">
                                 <span style={{
                                     padding: '2px 8px',
@@ -161,7 +165,7 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                                     {item.result.position}
                                 </span>
                             </td>
-                            <td className="px-4 py-3 text-mercedes-text">{item.result.points}</td>
+                            <td className="px-4 py-3 text-mercedes-light text-xs">{item.result.points}</td>
                         </tr>
                     ))}
                 </tbody>
