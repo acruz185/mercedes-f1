@@ -63,87 +63,136 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
     const pageRows = filteredRows.slice(start, start + rowsPerPage)
 
     return (
-        <div id="table-section">
-            <div id="table-controls">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchA}
-                    onChange={e => {
-                        setSearchA(e.target.value)
-                        setCurrentPage(1)
-                    }}
-                />
-                <select
-                    value={boolMode}
-                    onChange={e => setBoolMode(e.target.value as "AND" | "OR")}>
-                    <option value="AND">AND</option>
-                    <option value="OR">OR</option>
-                </select>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchB}
-                    onChange={e => {
-                        setSearchB(e.target.value)
-                        setCurrentPage(1)
-                    }}
-                    />
-                <button onClick={() => setRegexMode(r => !r)}>
-                    {regexMode ? "Regex ON" : "Regex OFF"}
-                </button>                    
-                <select
-                    value={rowsPerPage}
-                    onChange={e => {
-                        setRowsPerPage(parseInt(e.target.value))
-                        setCurrentPage(1)
-                    }}
-                >
-                    <option value={10}>10 rows</option>
-                    <option value={20}>20 rows</option>
-                    <option value={50}>50 rows</option>
-                </select>
-            </div>
-            {hasRegexError && (
-                <p style={{ color: '#c0404f', fontSize: '12px' }}>
-                    Invalid regex pattern — using plain text search
-                </p>
-            )}
-            <table>
+    <div className="py-16 px-6 max-w-7xl mx-auto">
+        <h2 className="text-4xl font-display text-mercedes-teal mb-2">Race Results</h2>
+        <p className="text-mercedes-silver text-sm mb-8 tracking-widest uppercase">2010 — 2025 · All Circuits</p>
+
+        {/* controls */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+            <input
+                type="text"
+                placeholder="Search..."
+                value={searchA}
+                onChange={e => { setSearchA(e.target.value); setCurrentPage(1) }}
+                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-teal transition-colors"
+            />
+            <select
+                value={boolMode}
+                onChange={e => setBoolMode(e.target.value as "AND" | "OR")}
+                className="bg-mercedes-card border border-white/10 text-mercedes-teal rounded px-3 py-2 text-sm focus:outline-none"
+            >
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+            </select>
+            <input
+                type="text"
+                placeholder="Search..."
+                value={searchB}
+                onChange={e => { setSearchB(e.target.value); setCurrentPage(1) }}
+                className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-teal transition-colors"
+            />
+            <button
+                onClick={() => setRegexMode(r => !r)}
+                className={`px-4 py-2 rounded text-sm border transition-colors ${
+                    regexMode
+                        ? 'border-mercedes-teal text-mercedes-teal bg-mercedes-teal/10'
+                        : 'border-white/10 text-white/40 hover:border-white/30'
+                }`}
+            >
+                .*  Regex
+            </button>
+            <select
+                value={rowsPerPage}
+                onChange={e => { setRowsPerPage(parseInt(e.target.value)); setCurrentPage(1) }}
+                className="bg-mercedes-card border border-white/10 text-mercedes-silver rounded px-3 py-2 text-sm focus:outline-none ml-auto"
+            >
+                <option value={10}>10 rows</option>
+                <option value={20}>20 rows</option>
+                <option value={50}>50 rows</option>
+            </select>
+        </div>
+
+        {hasRegexError && (
+            <p className="text-red-400 text-xs mb-4">Invalid regex — using plain text search</p>
+        )}
+
+        {/* table */}
+        <div className="rounded-xl border border-white/5 overflow-hidden">
+            <table className="w-full text-sm">
                 <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Grand Prix</th>
-                        <th>Circuit</th>
-                        <th>Date</th>
-                        <th>Driver</th>
-                        <th>Position</th>
-                        <th>Points</th>
+                    <tr className="bg-mercedes-card border-b border-white/10">
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Year</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Grand Prix</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Circuit</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Date</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Driver</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Pos</th>
+                        <th className="text-left px-4 py-3 text-xs text-mercedes-teal font-display tracking-widest">Pts</th>
                     </tr>
                 </thead>
                 <tbody>
                     {pageRows.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.race.season}</td>
-                            <td>{item.race.raceName}</td>
-                            <td>{item.race.Circuit.circuitName}</td>
-                            <td>{item.race.date}</td>
-                            <td>{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
-                            <td>{item.result.position}</td>
-                            <td>{item.result.points}</td>
+                        <tr
+                            key={index}
+                            className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                        >
+                            <td className="px-4 py-3 text-mercedes-teal font-display text-base">{item.race.season}</td>
+                            <td className="px-4 py-3 text-mercedes-text">{item.race.raceName}</td>
+                            <td className="px-4 py-3 text-mercedes-silver text-xs">{item.race.Circuit.circuitName}</td>
+                            <td className="px-4 py-3 text-mercedes-silver text-xs">{item.race.date}</td>
+                            <td className="px-4 py-3 text-mercedes-text font-medium">{item.result.Driver.givenName} {item.result.Driver.familyName}</td>
+                            <td className="px-4 py-3">
+                                <span className={`px-2 py-1 rounded text-xs font-display ${
+                                    item.result.position === '1'
+                                        ? 'bg-mercedes-teal/20 text-mercedes-teal'
+                                        : item.result.position === '2' || item.result.position === '3'
+                                        ? 'bg-white/10 text-white'
+                                        : 'text-mercedes-silver'
+                                }`}>
+                                    {item.result.position}
+                                </span>
+                            </td>
+                            <td className="px-4 py-3 text-mercedes-text">{item.result.points}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-
-            <div id="pagination">
-                <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>«</button>
-                <button onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 1}>Previous</button>
-                <span>Page {currentPage} of {totalPages}</span>
-                <button onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage === totalPages}>Next</button>
-                <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>»</button>
-            </div>
         </div>
-    )
-}
 
+        {/* pagination */}
+        <div className="flex items-center justify-center gap-3 mt-6">
+            <button
+                onClick={() => setCurrentPage(1)}
+                disabled={currentPage === 1}
+                className="px-3 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+            >
+                «
+            </button>
+            <button
+                onClick={() => setCurrentPage(p => p - 1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+            >
+                Previous
+            </button>
+            <span className="text-mercedes-silver text-sm px-4">
+                Page <span className="text-mercedes-teal font-display text-lg">{currentPage}</span> of {totalPages}
+            </span>
+            <button
+                onClick={() => setCurrentPage(p => p + 1)}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+            >
+                Next
+            </button>
+            <button
+                onClick={() => setCurrentPage(totalPages)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-2 rounded border border-white/10 text-mercedes-silver hover:border-mercedes-teal hover:text-mercedes-teal disabled:opacity-20 disabled:cursor-not-allowed transition-colors text-sm"
+            >
+                »
+            </button>
+        </div>
+    </div>
+)
+}
