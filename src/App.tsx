@@ -40,7 +40,7 @@ function App() {
 
         <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
           <div className="h-px flex-1 bg-white/10" />
-          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Performance History</p>
+          <p className="text-lg tracking-widest uppercase text-mercedes-light font-fancy">Performance History</p>
           <div className="h-px flex-1 bg-white/10" />
         </div>
         <StandingsChart standings={standings} />
@@ -48,13 +48,13 @@ function App() {
 
         <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
           <div className="h-px flex-1 bg-white/10" />
-          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Circuit Legacy</p>
+          <p className="text-lg tracking-widest uppercase text-mercedes-light font-fancy">Circuit Legacy</p>
           <div className="h-px flex-1 bg-white/10" />
         </div>
         <TrackSection />
         <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
           <div className="h-px flex-1 bg-white/10" />
-          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Meet the Team</p>
+          <p className="text-lg tracking-widest uppercase text-mercedes-light font-fancy">Meet the Team</p>
           <div className="h-px flex-1 bg-white/10" />
         </div>    
         <DriverCarousel />

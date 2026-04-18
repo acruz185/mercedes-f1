@@ -60,32 +60,37 @@ export default function TrackSection() {
     }
 }, [selected])
 
-
     return (
-        <section className="py-20 px-6 max-w-7xl mx-auto">
-            <h2 className="text-4xl font-display text-mercedes-primary mb-2">
+        <section className="py-5 px-6 max-w-7xl mx-auto">
+            <h2 className="text-4xl font-display text-mercedes-primary mb-2 font-black">
                 Iconic Circuits
             </h2>
             <p className="text-mercedes-light mb-8 text-sm">
-                Select a circuit to explore Mercedes' legacy
+                Select a circuit to explore Mercedes' defining moments
             </p>
 
-            <select
-                value={selected.id}
-                onChange={e => {
-                    const circuit = CIRCUITS.find(c => c.id === e.target.value)
-                    if (circuit) setSelected(circuit)
-                }}
-                className="bg-mercedes-card text-mercedes-text border border-mercedes-light/20 rounded px-4 py-2 mb-10 font-body"
-            >
-                {CIRCUITS.map(c => (
-                    <option key={c.id} value={c.id}>{c.name}</option>
-                ))}
-            </select>
+            <div className="flex items-center gap-4 mb-10">
+                <p className="text-xs text-mercedes-light tracking-widest uppercase">Circuit</p>
+                <select
+                    value={selected.id}
+                    onChange={e => {
+                        const circuit = CIRCUITS.find(c => c.id === e.target.value)
+                        if (circuit) setSelected(circuit)
+                    }}
+                    className="bg-mercedes-card text-mercedes-light border border-white/10 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-primrary transition-colors"
+                >
+                    {CIRCUITS.map(c => (
+                        <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
+                </select>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 {/* SVG Track */}
-                <div className="bg-mercedes-card rounded-xl p-6 border border-white/5">
+                <div className="bg-mercedes-card rounded-xl p-6 border border-white/5 relative overflow-hidden">
+                    <p className="absolute top-4 left-4 text-xs text-mercedes-silver tracking-widest uppercase opacity-40">
+                        {selected.name}
+                    </p>
                     <svg
                         viewBox="0 0 1450 900"
                         width="100%"
@@ -131,20 +136,25 @@ export default function TrackSection() {
 
                 {/* Stats Panel */}
                 <div className="flex flex-col gap-6">
-                    <div className="flex items-center gap-3">
-                        <img 
-                            src={selected.countryFlag} 
-                            alt={selected.country}
-                            className="w-8 h-auto rounded-sm"
-                        />
-                        <h3 className="text-3xl font-display text-mercedes-text">
-                            {selected.name}
-                        </h3>
+                    <div>
+                        <div className="flex items-center gap-3 mb-1">
+                            <img 
+                                src={selected.countryFlag} 
+                                alt={selected.country}
+                                className="w-8 h-auto rounded-sm"
+                            />
+                            <h3 className="text-3xl font-display text-mercedes-light">
+                                {selected.name}
+                            </h3>
+                        </div>
+                        <p className="text-mercedes-light text-xs tracking-widest uppercase ml-11">
+                            {selected.country}
+                        </p>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                            <p className="text-xs text-mercedes-light mb-1">Best Lap</p>
-                            <p className="text-2xl font-display text-mercedes-teal">
+                            <p className="text-xs text-mercedes-light mb-1 tracking-widest uppercase">Best Lap</p>
+                            <p className="text-2xl font-display text-mercedes-accent">
                                 {selected.bestLap}
                             </p>
                             <p className="text-xs text-mercedes-light mt-1">
@@ -152,8 +162,8 @@ export default function TrackSection() {
                             </p>
                         </div>
                         <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                            <p className="text-xs text-mercedes-light mb-1">Mercedes Wins</p>
-                            <p className="text-2xl font-display text-mercedes-teal">
+                            <p className="text-xs text-mercedes-light mb-1 tracking-widest uppercase">Mercedes Wins</p>
+                            <p className="text-2xl font-display text-mercedes-accent">
                                 {selected.mercedesWins}
                             </p>
                             <p className="text-xs text-mercedes-light mt-1">
@@ -162,8 +172,9 @@ export default function TrackSection() {
                         </div>
                     </div>
 
-                    <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                        <p className="text-xs text-mercedes-light mb-2">Iconic Moment</p>
+                    <div className="bg-mercedes-card rounded-lg p-4 border border-white/5"
+                        style={{ borderLeftColor: COLORS.primaryAccent }}>
+                        <p className="text-xs text-mercedes-light mb-2 tracking-widest uppercase">Iconic Moment</p>
                         <p className="text-mercedes-text text-sm leading-relaxed">
                             {selected.famousMoment}
                         </p>

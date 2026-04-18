@@ -140,7 +140,7 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                             }}
                             className="border-b border-white/5 hover:bg-white/5 transition-colors"
                         >
-                            <td className="px-4 py-3 text-mercedes-accent font-display text-base">{item.race.season}</td>
+                            <td className="px-4 py-3 text-mercedes-primary font-display text-base">{item.race.season}</td>
                             <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.raceName}</td>
                             <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.Circuit.circuitName}</td>
                             <td className="px-4 py-3 text-mercedes-light text-xs">{item.race.date}</td>
