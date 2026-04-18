@@ -21,7 +21,8 @@
 body {
     background-color: #111111;
     color: #E8E8E8;
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Inter Tight', "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+
 }
 
 .track-path-animated {

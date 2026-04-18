@@ -109,7 +109,15 @@ export default function TrackSection() {
                             strokeLinecap="round"
                             className="track-path-animated"
                         />
-
+                        {/* start/finish line */}
+                        <rect
+                            x={selected.startX - 4}
+                            y={selected.startY - 20}
+                            width="8"
+                            height="40"
+                            fill="white"
+                            opacity="0.9"
+                        />
                         {!isDrawing && (
                             <circle
                                 cx={dotPos.x}
@@ -123,15 +131,16 @@ export default function TrackSection() {
 
                 {/* Stats Panel */}
                 <div className="flex flex-col gap-6">
-                    <div>
+                    <div className="flex items-center gap-3">
+                        <img 
+                            src={selected.countryFlag} 
+                            alt={selected.country}
+                            className="w-8 h-auto rounded-sm"
+                        />
                         <h3 className="text-3xl font-display text-mercedes-text">
                             {selected.name}
                         </h3>
-                        <p className="text-mercedes-silver text-sm mt-1">
-                            {selected.country}
-                        </p>
                     </div>
-
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
                             <p className="text-xs text-mercedes-silver mb-1">Best Lap</p>
