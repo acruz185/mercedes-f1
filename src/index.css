@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900&display=swap');
 
 @import "tailwindcss";
 
@@ -15,8 +15,6 @@
     --font-fancy: 'Instrument Serif', serif;
     --font-tech: 'Orbitron', sans-serif;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,100..900&display=swap');
 
 body {
     background-color: #111111;
@@ -38,4 +36,9 @@ body {
 @keyframes logospin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
 }
