@@ -37,7 +37,7 @@ export default function Standings({ standings }: Props) {
             fill: true,
             tension: 0.3,
             
-            backgroundColor: (context) => {
+            backgroundColor: (context: any) => {
                 const chart = context.chart
                 const { ctx, chartArea } = chart
 

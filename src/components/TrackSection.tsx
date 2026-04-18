@@ -7,7 +7,7 @@ export default function TrackSection() {
     const [selected, setSelected] = useState<CircuitData>(CIRCUITS[0])
     const [isDrawing, setIsDrawing] = useState(true)
     const pathRef = useRef<SVGPathElement>(null)
-    const [pathLength, setPathLength] = useState(0)
+    const [_pathLength, setPathLength] = useState(0)
     const [dotPos, setDotPos] = useState({ x: 0, y: 0 })
     const animFrameRef = useRef<number>(0)
     const startTimeRef = useRef<number>(0)

@@ -10,7 +10,6 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
     //sets all 3 variables to variables that will change based on their respective function
     const [currentPage, setCurrentPage] = useState(1)
     const [rowsPerPage, setRowsPerPage] = useState(20)
-    const [searchQuery, setSearchQuery] = useState("")
     const [searchA, setSearchA] = useState("")
     const [searchB, setSearchB] = useState("")
     const [boolMode, setBoolMode] = useState<"AND" | "OR">("AND")

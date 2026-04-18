@@ -95,17 +95,3 @@ export default function SponsorTicker() {
         </div>
     )
 }
-
-function getSponsorDomain(name: string): string {
-    const domains: Record<string, string> = {
-        "Petronas": "petronas.com",
-        "INEOS": "ineos.com",
-        "Tommy Hilfiger": "tommy.com",
-        "AMD": "amd.com",
-        "SAP": "sap.com",
-        "IWC Schaffhausen": "iwc.com",
-        "Crowdstrike": "crowdstrike.com",
-        "Qualcomm": "qualcomm.com"
-    }
-    return domains[name] || `${name.toLowerCase().replace(' ', '')}.com`
-}
