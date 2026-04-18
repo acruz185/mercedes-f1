@@ -117,7 +117,7 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
         )}
 
         {/* table */}
-        <div className="rounded-xl border border-black/5 overflow-hidden">
+        <div className="rounded-xl border border-white/5 overflow-hidden">
             <table className="w-full text-sm">
                 <thead>
                     <tr className="bg-mercedes-card border-b border-white/10">

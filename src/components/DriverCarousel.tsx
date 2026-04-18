@@ -20,7 +20,7 @@ export default function DriverCarousel() {
             <h2 className="text-4xl font-display text-mercedes-primary mb-2">
                 The Drivers
             </h2>
-            <p className="text-mercedes-primaryLight text-sm mb-12">
+            <p className="text-mercedes-light text-sm mb-12">
                 Click a card to flip it
             </p>
 

@@ -63,10 +63,10 @@ export default function TrackSection() {
 
     return (
         <section className="py-20 px-6 max-w-7xl mx-auto">
-            <h2 className="text-4xl font-display text-mercedes-teal mb-2">
+            <h2 className="text-4xl font-display text-mercedes-primary mb-2">
                 Iconic Circuits
             </h2>
-            <p className="text-mercedes-silver mb-8 text-sm">
+            <p className="text-mercedes-light mb-8 text-sm">
                 Select a circuit to explore Mercedes' legacy
             </p>
 
@@ -76,7 +76,7 @@ export default function TrackSection() {
                     const circuit = CIRCUITS.find(c => c.id === e.target.value)
                     if (circuit) setSelected(circuit)
                 }}
-                className="bg-mercedes-card text-mercedes-text border border-mercedes-silver/20 rounded px-4 py-2 mb-10 font-body"
+                className="bg-mercedes-card text-mercedes-text border border-mercedes-light/20 rounded px-4 py-2 mb-10 font-body"
             >
                 {CIRCUITS.map(c => (
                     <option key={c.id} value={c.id}>{c.name}</option>
@@ -143,27 +143,27 @@ export default function TrackSection() {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                            <p className="text-xs text-mercedes-silver mb-1">Best Lap</p>
+                            <p className="text-xs text-mercedes-light mb-1">Best Lap</p>
                             <p className="text-2xl font-display text-mercedes-teal">
                                 {selected.bestLap}
                             </p>
-                            <p className="text-xs text-mercedes-silver mt-1">
+                            <p className="text-xs text-mercedes-light mt-1">
                                 {selected.bestLapDriver} · {selected.bestLapYear}
                             </p>
                         </div>
                         <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                            <p className="text-xs text-mercedes-silver mb-1">Mercedes Wins</p>
+                            <p className="text-xs text-mercedes-light mb-1">Mercedes Wins</p>
                             <p className="text-2xl font-display text-mercedes-teal">
                                 {selected.mercedesWins}
                             </p>
-                            <p className="text-xs text-mercedes-silver mt-1">
+                            <p className="text-xs text-mercedes-light mt-1">
                                 2010 — 2025
                             </p>
                         </div>
                     </div>
 
                     <div className="bg-mercedes-card rounded-lg p-4 border border-white/5">
-                        <p className="text-xs text-mercedes-silver mb-2">Iconic Moment</p>
+                        <p className="text-xs text-mercedes-light mb-2">Iconic Moment</p>
                         <p className="text-mercedes-text text-sm leading-relaxed">
                             {selected.famousMoment}
                         </p>
