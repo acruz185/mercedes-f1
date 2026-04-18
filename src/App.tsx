@@ -33,6 +33,7 @@ function App() {
 
   return (
     <div>
+      <div className="animated-bg" />
         {!introComplete && (
           <IntroAnimation onComplete={handleIntroComplete} />        )}
         <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
