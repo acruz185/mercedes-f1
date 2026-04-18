@@ -37,17 +37,30 @@ function App() {
           <IntroAnimation onComplete={handleIntroComplete} />        )}
         <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
         <Hero />
-      <div className="min-h-screen bg-mercedes-dark text-mercedes-text">
-        <main className="max-w-7xl mx-auto px-6">
-            <RaceTable races={races} />
-            <StandingsChart standings={standings} />
-            <TrackSection />
-            <DriverCarousel />
-            <SponsorTicker />
-        </main>
+
+        <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
+          <div className="h-px flex-1 bg-white/10" />
+          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Performance History</p>
+          <div className="h-px flex-1 bg-white/10" />
+        </div>
+        <StandingsChart standings={standings} />
+        <RaceTable races={races} />
+
+        <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
+          <div className="h-px flex-1 bg-white/10" />
+          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Circuit Legacy</p>
+          <div className="h-px flex-1 bg-white/10" />
+        </div>
+        <TrackSection />
+        <div className="flex items-center gap-4 px-6 max-w-7xl mx-auto py-8">
+          <div className="h-px flex-1 bg-white/10" />
+          <p className="text-small tracking-widest uppercase text-mercedes-light font-fancy">Meet the Team</p>
+          <div className="h-px flex-1 bg-white/10" />
+        </div>    
+        <DriverCarousel />
+        <SponsorTicker />
       </div>
     </div>
-  </div>
   )
 }
 

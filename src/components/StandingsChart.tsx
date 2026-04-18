@@ -77,10 +77,32 @@ export default function Standings({ standings }: Props) {
     }
 
     return (
-        <div id="chart-section">
-            <h2>Constructor Points by Season</h2>
-            <div id="chart-container" style={{height: '400px', position: 'relative'}}>
-                <Line data={data} options={options} />
+        <div className="py-2 px-6 max-w-7xl mx-auto">
+            <h2 className='text-4xl font-display text-mercedes-accent mb-2 font-black'>Constructor Points by Season</h2>
+            <p className="text-mercedes-light text-sm mb-10">
+                Mercedes AMG F1 constructor championship points — 2010 to 2025
+            </p>
+            <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="bg-mercedes-card rounded-xl p-4 border border-white/5">
+                    <p className="text-xs text-mercedes-light mb-1 tracking-widest uppercase">Peak Season</p>
+                    <p className="text-3xl font-display text-mercedes-accent">2016</p>
+                    <p className="text-xs text-mercedes-light mt-1">765 points</p>
+                </div>
+                <div className="bg-mercedes-card rounded-xl p-4 border border-white/5">
+                    <p className="text-xs text-mercedes-light mb-1 tracking-widest uppercase">Championships</p>
+                    <p className="text-3xl font-display text-mercedes-accent">8</p>
+                    <p className="text-xs text-mercedes-light mt-1">2014 — 2021</p>
+                </div>
+                <div className="bg-mercedes-card rounded-xl p-4 border border-white/5">
+                    <p className="text-xs text-mercedes-light mb-1 tracking-widest uppercase">Seasons</p>
+                    <p className="text-3xl font-display text-mercedes-accent">16</p>
+                    <p className="text-xs text-mercedes-light mt-1">2010 — 2025</p>
+                </div>
+            </div>
+            <div className="color-mercedes-card rounded-xl border border-white/5 p-6">
+                <div style={{ height: '400px', position: 'relative' }}>
+                    <Line data={data} options={options} />
+                </div>
             </div>
         </div>
     )
