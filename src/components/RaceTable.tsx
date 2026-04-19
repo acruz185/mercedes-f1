@@ -43,9 +43,10 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
         const matchA = (query: string) => {
             if (!query) return true
             try {
-                return regexMode
+                const result = regexMode
                     ? new RegExp(query, 'i').test(text)
                     : text.includes(query.toLowerCase())
+                return result
             } catch {
                 return text.includes(query.toLowerCase())
             }
@@ -93,7 +94,10 @@ export default function RaceTable({ races }: Props) { //grabs races directly out
                 className="bg-mercedes-card border border-white/10 text-mercedes-text placeholder-white/20 rounded px-4 py-2 text-sm focus:outline-none focus:border-mercedes-primary transition-colors"
             />
             <button
-                onClick={() => setRegexMode(r => !r)}
+                onClick={() => {
+                    setRegexMode(r => !r)
+                    setCurrentPage(1)
+                }}
                 className={`px-4 py-2 rounded text-sm border transition-colors ${
                     regexMode
                         ? 'border-mercedes-primary text-mercedes-primary bg-mercedes-primary/10'
