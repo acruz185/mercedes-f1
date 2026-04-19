@@ -15,9 +15,7 @@ import MusicPlayer from './components/MusicPlayer'
 function App() {
   const [races, setRaces] = useState<Race[]>([])
   const [standings, setStandings] = useState<ConstructorStanding[]>([])
-  const [introComplete, setIntroComplete] = useState(
-    () => localStorage.getItem('introSeen') === 'true'
-  )
+  const [introComplete, setIntroComplete] = useState(false)
 
   useEffect(() => {
     async function loadData() {
@@ -30,7 +28,6 @@ function App() {
   }, [])
 
   const handleIntroComplete = () => {
-      localStorage.setItem('introSeen', 'true')
       setIntroComplete(true)
   }
 
