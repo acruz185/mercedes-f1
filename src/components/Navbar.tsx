@@ -1,3 +1,4 @@
+import { asset } from '../utils'
 export default function Navbar() {
     const scrollTo = (id: string) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -22,7 +23,7 @@ export default function Navbar() {
             {/* logo */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <img
-                    src="/mercedes-logo.png"
+                    src={asset('mercedes-logo.png')}
                     alt="Mercedes"
                     style={{ height: '28px', width: 'auto' }}
                 />

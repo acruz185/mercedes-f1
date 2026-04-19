@@ -1,3 +1,4 @@
+import { asset } from './utils'
 export type DriverData = {
     id: string
     frontCard: string
@@ -7,32 +8,32 @@ export type DriverData = {
 export const DRIVERS: DriverData[] = [
     {
         id: "schumacher",
-        frontCard: "/drivers/schumacher-front.png",
-        backCard: "/drivers/schumacher-back.png"
+        frontCard: asset("drivers/schumacher-front.png"),
+        backCard: asset("drivers/schumacher-back.png")
     },
     {
         id: "rosberg",
-        frontCard: "/drivers/rosberg-front.png",
-        backCard: "/drivers/rosberg-back.png"
+        frontCard: asset("drivers/rosberg-front.png"),
+        backCard: asset("drivers/rosberg-back.png")
     },
     {
         id: "hamilton",
-        frontCard: "/drivers/hamilton-front.png",
-        backCard: "/drivers/hamilton-back.png"
+        frontCard: asset("drivers/hamilton-front.png"),
+        backCard: asset("drivers/hamilton-back.png")
     },
     {
         id: "bottas",
-        frontCard: "/drivers/bottas-front.png",
-        backCard: "/drivers/bottas-back.png"
+        frontCard: asset("drivers/bottas-front.png"),
+        backCard: asset("drivers/bottas-back.png")
     },
     {
         id: "russell",
-        frontCard: "/drivers/russell-front.png",
-        backCard: "/drivers/russell-back.png"
+        frontCard: asset("drivers/russell-front.png"),
+        backCard: asset("drivers/russell-back.png")
     },
     {
         id: "antonelli",
-        frontCard: "/drivers/antonelli-front.png",
-        backCard: "/drivers/antonelli-back.png"
+        frontCard: asset("drivers/antonelli-front.png"),
+        backCard: asset("drivers/antonelli-back.png")
     },
 ]

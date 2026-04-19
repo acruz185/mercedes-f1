@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { asset } from '../utils'
 
 export default function MusicPlayer() {
     const [playing, setPlaying] = useState(false)
@@ -16,7 +17,7 @@ export default function MusicPlayer() {
 
     return (
         <>
-            <audio ref={audioRef} src="/music.mp3" loop />
+            <audio ref={audioRef} src={asset('music.mp3')} loop />
             <button
                 onClick={toggle}
                 style={{

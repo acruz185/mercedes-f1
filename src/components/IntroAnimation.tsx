@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { asset } from '../utils'
 
 type Props = {
     onComplete: () => void
@@ -57,7 +58,7 @@ export default function IntroAnimation({ onComplete }: Props) {
                 animation: 'logospin 1.5s linear infinite'
             }}>
                 <img
-                    src="/mercedes-logo.png"
+                    src={asset('mercedes-logo.png')}
                     alt="Mercedes logo"
                     style={{
                         width: '100%',

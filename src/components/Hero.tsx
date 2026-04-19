@@ -1,3 +1,4 @@
+import { asset } from '../utils'
 export default function Hero() {
     return (
         <section style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
@@ -15,7 +16,7 @@ export default function Hero() {
                     objectFit: 'cover'
                 }}
             >
-                <source src="/hero.mp4" type="video/mp4" />
+                <source src={asset("hero.mp4")} type="video/mp4" />
             </video>
 
             {/* dark overlay so text is readable */}
