@@ -84,11 +84,11 @@ export default function Hero() {
                 {/* scroll indicator */}
                 <div style={{
                     position: 'absolute',
-                    bottom: '40px',
+                    bottom: '20px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '4px',
                     animation: 'bounce 2s infinite'
                 }}>
                     <p style={{

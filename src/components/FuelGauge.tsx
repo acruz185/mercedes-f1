@@ -68,9 +68,9 @@ export default function FuelGauge() {
                 {/* center dot */}
                 <circle cx="35" cy="40" r="3" fill="#80142B" />
                 {/* E label */}
-                <text x="4" y="44" fill="#555" fontSize="8" fontFamily="var(--font-body)">E</text>
+                <text x="4" y="44" fill="#8b8b8b" fontSize="8" fontFamily="var(--font-body)">E</text>
                 {/* F label */}
-                <text x="60" y="44" fill="#555" fontSize="8" fontFamily="var(--font-body)">F</text>
+                <text x="60" y="44" fill="#8b8b8b" fontSize="8" fontFamily="var(--font-body)">F</text>
             </svg>
 
             {/* fuel label */}

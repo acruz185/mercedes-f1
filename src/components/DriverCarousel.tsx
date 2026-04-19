@@ -17,10 +17,10 @@ export default function DriverCarousel() {
 
     return (
         <section className="py-5 px-6 max-w-7xl mx-auto">
-            <h2 className="text-4xl font-display text-mercedes-primary mb-2">
+            <h2 className="text-4xl font-display text-mercedes-primary mb-2 font-black">
                 The Drivers
             </h2>
-            <p className="text-mercedes-light text-sm mb-12">
+            <p className="text-mercedes-light text-sm mb-8">
                 Mercedes AMG F1 drivers from 2010 to 2025: click a card to flip it
             </p>
 
@@ -28,20 +28,20 @@ export default function DriverCarousel() {
                 <button
                     onClick={handlePrev}
                     style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '50%',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    background: 'transparent',
-                    color: '#C6C6C6',
-                    fontSize: '20px',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'border-color 0.2s, background 0.2s',
-                    flexShrink: 0
-                }}
+                        width: '44px',
+                        height: '44px',
+                        borderRadius: '50%',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: 'transparent',
+                        color: '#C6C6C6',
+                        fontSize: '20px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: 'border-color 0.2s, background 0.2s',
+                        flexShrink: 0
+                    }}
                 onMouseEnter={e => {
                     (e.target as HTMLButtonElement).style.borderColor = '#C6C6C6'
                     ;(e.target as HTMLButtonElement).style.background = 'rgba(165, 165, 165, 0.1)'
@@ -54,28 +54,45 @@ export default function DriverCarousel() {
                 ‹
                 </button>
 
-                <div className="flex items-center justify-center gap-1">
+                <div style={{
+                    width: '580px',
+                    height: '420px',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>                    
                     {DRIVERS.map((driver, index) => {
                         const offset = index - activeIndex
                         const isActive = offset === 0
+                        const isAdjacent = Math.abs(offset) === 1
 
-                        if (Math.abs(offset) > 1) return null
+                        if (!isActive && !isAdjacent) return null
 
                         return (
                             <div
                                 key={driver.id}
                                 onClick={isActive ? () => setFlipped(f => !f) : undefined}
-                                className="transition-all duration-500"
                                 style={{
-                                    width: isActive ? '280px' : '180px',
+                                    position: 'absolute',
+                                    width: isActive ? '280px' : '160px',
                                     opacity: isActive ? 1 : 0.4,
-                                    transform: isActive
-                                        ? 'scale(1)'
-                                        : `scale(0.85) translateX(${offset * 20}px)`,
-                                    filter: isActive ? 'none' : 'blur(1px)',    
+                                    filter: isActive ? 'none' : 'blur(1px)',
                                     cursor: isActive ? 'pointer' : 'default',
                                     perspective: '1000px',
-                                    flexShrink: 0
+                                    left: isActive 
+                                        ? '50%' 
+                                        : offset < 0 
+                                        ? '50px' 
+                                        : 'auto',
+                                    right: offset > 0 ? '50px' : 'auto',
+                                    transform: isActive 
+                                        ? 'translateX(-50%)' 
+                                        : offset < 0 
+                                        ? 'translateX(0)' 
+                                        : 'translateX(0)',
+                                    transition: 'all 0.5s ease',
+                                    zIndex: isActive ? 10 : 5
                                 }}
                             >
                                 <div
@@ -125,7 +142,6 @@ export default function DriverCarousel() {
                                         background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4) 100%)',
                                         pointerEvents: 'none'
                                     }} />
-
                                     {isActive && !flipped && (
                                         <div style={{
                                             position: 'absolute',
